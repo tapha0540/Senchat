@@ -4,25 +4,25 @@ const TabsLayout = () => {
   return (
     <Tabs>
       <Tabs.Screen
-        name="discussions/index"
+        name="discussions"
         options={{
           title: "discussions",
         }}
       />
       <Tabs.Screen
-        name="news/index"
+        name="news"
         options={{
           title: "actus",
         }}
       />
       <Tabs.Screen
-        name="community/index"
+        name="community"
         options={{
           title: "Communautés",
         }}
       />
       <Tabs.Screen
-        name="calls/index"
+        name="calls"
         options={{
           title: "Appels",
         }}

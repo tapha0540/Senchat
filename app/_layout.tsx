@@ -8,7 +8,10 @@ function RootLayout() {
         headerShown: false,
       }}
     >
+      <Stack.Screen name="index" />
       <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="settings" />
+      <Stack.Screen name="signup" />
     </Stack>
   );
 }

@@ -1,20 +1,11 @@
-import { Stack } from "expo-router";
 import { Text, View } from "react-native";
 
-const Index = () => {
+const Discussions = () => {
   return (
-    <>
-      <Stack.Screen
-        options={{
-          //title: "WhatsApp",
-          headerTitle: "Whatsapp",
-        }}
-      />
-      <View>
-        <Text>Discussions page</Text>
-      </View>
-    </>
+    <View>
+      <Text>Discussions page</Text>
+    </View>
   );
 };
 
-export default Index;
+export default Discussions;

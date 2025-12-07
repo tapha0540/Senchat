@@ -1,11 +1,9 @@
-import { Stack } from "expo-router";
+import { Text } from "react-native";
 
-const Index = () => {
+const News = () => {
   return (
-    <>
-      <Stack.Screen options={{ headerTitle: "Actus" }} />
-    </>
+    <Text>News</Text>
   );
 };
 
-export default Index;
+export default News;

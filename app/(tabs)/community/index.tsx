@@ -1,15 +1,11 @@
-import { Stack } from "expo-router";
 import { ScrollView, Text } from "react-native";
 
-const Index = () => {
+const Community = () => {
   return (
-    <>
-      <Stack.Screen options={{ headerTitle: "Communautés" }} />
-      <ScrollView>
-        <Text>Communatés</Text>
-      </ScrollView>
-    </>
+    <ScrollView>
+      <Text>Communatés</Text>
+    </ScrollView>
   );
 };
 
-export default Index;
+export default Community;
