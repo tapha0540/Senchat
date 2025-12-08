@@ -6,7 +6,7 @@ const DiscussionsLayout = () => {
       <Stack.Screen
         name="index"
         options={{
-          headerTitle: "Whatsapp",
+          headerTitle: "Discussions",
         }}
       />
     </Stack>
