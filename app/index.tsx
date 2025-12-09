@@ -1,5 +1,7 @@
 import images from "@/constants/images";
-import { router } from "expo-router";
+import { userContext } from "@/hooks/user-context";
+import { Redirect, router } from "expo-router";
+import { useContext } from "react";
 import {
   Dimensions,
   Image,
@@ -11,26 +13,37 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Home = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <Image source={images.splashIcon} style={styles.backgroundImg} />
-      <Text style={styles.heading}>Bienvenue sur WakhTane !</Text>
-      <Text style={styles.slogan}>
-        Partagez et rester connectés avec vos amis.
-      </Text>
-      <View style={styles.middle}>
-        <TouchableOpacity
-          style={styles.logInBtn}
-          activeOpacity={0.5}
-          onPress={() => router.push("/signup")}
-        >
-          <Text style={{ textAlign: "center", color: "white" }}>
-            Se connecter
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
-  );
+  const user = useContext(userContext);
+  if (user) {
+    console.log(user?.$id);
+    return <Redirect href="/discussions" />;
+  } else {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Image source={images.splashIcon} style={styles.backgroundImg} />
+        <Text style={styles.heading}>Bienvenue sur WakhTane !</Text>
+        <Text style={styles.slogan}>
+          Partagez et rester connectés avec vos amis.
+        </Text>
+        <View style={styles.middle}>
+          <TouchableOpacity
+            style={styles.logInBtn}
+            activeOpacity={0.5}
+            onPress={() => router.push("/login")}
+          >
+            <Text style={{ textAlign: "center", color: "white" }}>
+              Se connecter
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => router.push("/signup")}>
+            <Text style={{ color: "#0099ff", textDecorationLine: "underline" }}>
+              Si tu n{"'"}as pas de compte inscrit toi !
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    );
+  }
 };
 /**
  *  #007fff

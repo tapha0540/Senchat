@@ -6,7 +6,7 @@ const SignUpLayout = () => {
       <Stack.Screen
         name="index"
         options={{
-          headerTitle: "Inscription",
+          headerTitle: "Connexion",
           headerTitleAlign: "center",
           animation: "slide_from_right",
         }}

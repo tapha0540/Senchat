@@ -1,41 +1,56 @@
+import { MaterialIcons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import React, { ReactNode } from "react";
-import { StyleSheet, View } from "react-native";
-
-const TabBarIcon = ({
-  icon,
-  focused,
-  title,
-  size,
-  color,
-}: {
-  icon: ReactNode;
-  focused: boolean;
-  title: string;
-  size: number;
-  color: string;
-}) => <View style={styles.tabBarIconContainer}></View>;
+import React from "react";
+import { StyleSheet } from "react-native";
 
 const TabsLayout = () => {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: "#0099ff",
+        // tabBarActiveTintColor: "white",
+        // tabBarActiveBackgroundColor: "#0099ff",
+        tabBarIconStyle: {
+          backgroundColor: "#0099ff",
+          width: "100%",
+          borderRadius: 25,
+        },
+        tabBarInactiveTintColor: "#000ff",
         animation: "shift",
       }}
     >
       <Tabs.Screen
         name="discussions"
         options={{
-          tabBarIcon: (params) => (
-            <TabBarIcon title="Discussions" icon={<></>} {...params} />
+          tabBarIcon: ({ size, color, focused }) => (
+            <MaterialIcons name="message" size={size} color={color} />
           ),
         }}
       />
-      <Tabs.Screen name="news" />
-      <Tabs.Screen name="community" />
-      <Tabs.Screen name="calls" />
+      <Tabs.Screen
+        name="news"
+        options={{
+          tabBarIcon: ({ size, color, focused }) => (
+            <MaterialIcons name="newspaper" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="community"
+        options={{
+          tabBarIcon: ({ size, color, focused }) => (
+            <MaterialIcons name="groups" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="calls"
+        options={{
+          tabBarIcon: ({ size, color, focused }) => (
+            <MaterialIcons name="wifi-calling-3" size={size} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 };

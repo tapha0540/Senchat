@@ -1,4 +1,4 @@
-import { signUp } from "@/lib/appwrite";
+import { logIn } from "@/lib/appwrite";
 import { Redirect } from "expo-router";
 import { useState } from "react";
 import {
@@ -19,15 +19,17 @@ import { Button, Text, TextInput } from "react-native-paper";
 const SignUpHome = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = (e: GestureResponderEvent) => {
     e.preventDefault();
     if (password.length >= 8) {
-      signUp(userName.trim(), phoneNumber.trim(), password.trim())
-        .then((user) => setIsLoggedIn(true))
+      logIn(phoneNumber.trim(), password.trim())
+        .then((user) => {
+          setIsLoggedIn(true);
+          console.table(user);
+        })
         .catch((err) => {
-          console.error("error while sign in ", err);
+          console.error("error while login ", err);
         });
     } else {
       console.error(" password must be between 8 and 265");
@@ -39,17 +41,8 @@ const SignUpHome = () => {
     return (
       <KeyboardAvoidingView style={styles.container}>
         <Text style={{ alignSelf: "center", textAlign: "center" }}>
-          Bienvenue sur la page d{"'"}inscription.
+          Bienvenue sur la page de connexion.
         </Text>
-        <TextInput
-          value={userName}
-          keyboardType="default"
-          onChangeText={setUserName}
-          label="Prénom et nom"
-          mode="outlined"
-          activeOutlineColor="#0099ff"
-          placeholder="Ex: Moustapha Fall"
-        />
         <TextInput
           value={phoneNumber}
           keyboardType="phone-pad"
@@ -70,7 +63,7 @@ const SignUpHome = () => {
           maxLength={265}
         />
         <Button style={styles.logInBtn} onPress={handleSubmit}>
-          <Text style={{ color: "white" }}>S{"'"}inscrire</Text>
+          <Text style={{ color: "white" }}>Se connecter</Text>
         </Button>
       </KeyboardAvoidingView>
     );
@@ -79,7 +72,6 @@ const SignUpHome = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "white",
     padding: 35,
     rowGap: 40,
   },
